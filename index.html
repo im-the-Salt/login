@@ -2,10 +2,32 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=https://sharp-cockatoo-evolved.ngrok-free.app/">
-  <title>Redirecting...</title>
+  <title>轉跳中...</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 20%;
+    }
+  </style>
 </head>
 <body>
-  <p>正在轉跳中，若未自動跳轉，請點此：<a href="https://sharp-cockatoo-evolved.ngrok-free.app/">點我前往</a></p>
+  <p>正在建立安全連線…</p>
+  <p>若 3 秒內未跳轉，請點此 👉 <a id="link" href="https://sharp-cockatoo-evolved.ngrok-free.app">手動前往主頁</a></p>
+
+  <script>
+    fetch("https://sharp-cockatoo-evolved.ngrok-free.app", {
+      headers: {
+        "ngrok-skip-browser-warning": "true"
+      }
+    }).finally(() => {
+      // 這裡用延遲是為了讓 header 被 ngrok 接收到後再轉跳
+      setTimeout(() => {
+        window.location.href = "https://sharp-cockatoo-evolved.ngrok-free.app";
+      }, 3000);
+    });
+  </script>
 </body>
 </html>
